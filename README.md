@@ -1,4 +1,4 @@
-tructure of DataBase
+Structure of DataBase
 
 ## User
 ### association
