@@ -1,0 +1,19 @@
+.container
+  %h2.form-signin-heading.text-center Please sign in
+  #new-user.new-user
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-inputs.form-signin
+        %label.sr-only{:for => "inputEmail"}
+        = f.email_field :email, placeholder: "Input Email", required: true, autofocus: true, id: "inputEmail", class: "form-control"
+        %label.sr-only{:for => "inputPassword"}
+        = f.password_field :password, placeholder: "Input Password", required: true, id: "inputPassword", class: "form-control"
+        .checkbox
+          %label
+            =f.check_box :remember_me, id: "user_remenber_me"
+            Remember me
+      .form_actions.form-signin
+        %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Sign in
+  .text-center
+    %p
+      Not a member?
+      = link_to "Sign up now", new_user_registration_path
