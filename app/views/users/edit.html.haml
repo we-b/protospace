@@ -1,0 +1,30 @@
+.container.user-new.clearfix
+  = form_for @user do |f|
+    .col-md-8.col-md-offset-2
+      %header.row.user-nav.row
+        .col-md-12
+          %h2 Edit
+          .user-name_image.row
+            .user-name.col-md-10
+              = f.text_field :name, placeholder: "Input Username", autofocus: true, required: true
+            .user-image.col-md-2
+              %img{ style: "" }
+              = f.file_field :avatar
+          .user-email
+            = f.text_field :email, placeholder: "Input Email", required: true
+        .col-md-12
+          %h4 Position
+          .user-user-member.row
+            .user-name.col-md-12
+              = f.text_field :position, placeholder: "Input Position"
+          %h4 Profile
+          .user-user-profile.row
+            .user-name.col-md-12
+              = f.text_area :profile, placeholder: "Input Profile", size:"30×4"
+          %h4 Occupation
+          .user-name_image.row
+            .user-name.col-md-12
+              = f.text_area :occupation, placeholder: "Input Occupation", size: "30×4"
+        .row.text-center.user-btn
+          .actions
+            = f.submit "SAVE", id: "button", class: "btn btn-lg btn-primary btn-block"
