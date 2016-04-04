@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get  '/prototypes/new'    =>    'prototypes#new'
   get  '/prototypes/show'   =>    'prototypes#show'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 end
