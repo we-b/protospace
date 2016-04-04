@@ -6,10 +6,11 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to :root, notice: 'The user information was successfully updated'
+    redirect_to :root
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
