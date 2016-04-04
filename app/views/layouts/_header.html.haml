@@ -17,6 +17,8 @@
               %li
                 = link_to 'Edit', edit_user_path(current_user)
               %li
+                = link_to 'My Page', user_path(current_user)
+              %li
                 = link_to 'Logout', destroy_user_session_path, method: :delete
       - else
         %ul.nav.navbar-nav.navbar-right
