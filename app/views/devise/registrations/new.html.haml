@@ -1,7 +1,7 @@
 .container.user-new.clearfix
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = devise_error_messages!
     .col-md-8.col-md-offset-2
+      = devise_error_messages!
       %header.row.user-nav.row
         .col-md-12
           %h2 Register
