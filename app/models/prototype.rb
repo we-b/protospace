@@ -1,10 +1,10 @@
 class Prototype < ActiveRecord::Base
   belongs_to :user
-  has_many :caputured_images, dependent: :destroy
+  has_many :captured_images, dependent: :destroy
 
   accepts_nested_attributes_for :captured_images
 
-  validates :titie,
+  validates :title,
             :catch_copy,
             :concept,
             presence: true
