@@ -13,7 +13,7 @@ class PrototypesController < ApplicationController
     if prototype.save
       redirect_to :root
     else
-      render action: :new
+      redirect_to action: :new
     end
   end
 
