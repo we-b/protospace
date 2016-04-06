@@ -12,4 +12,8 @@ class Prototype < ActiveRecord::Base
   def reject_sub_images(attributed)
     attributed['content'].blank?
   end
+
+  def set_main_thumbnail
+    captured_images.main.first.content
+  end
 end
