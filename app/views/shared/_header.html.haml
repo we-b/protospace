@@ -20,6 +20,9 @@
                 = link_to 'My Page', user_path(current_user)
               %li
                 = link_to 'Logout', destroy_user_session_path, method: :delete
+          %li
+            .btn.btn-default
+              = link_to "New Photo", new_prototype_path, style: "color: #337ab7;"
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
