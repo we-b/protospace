@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to :root
+    redirect_to :root, notice: 'Your user infomation was successfully updated'
   end
 
   private
