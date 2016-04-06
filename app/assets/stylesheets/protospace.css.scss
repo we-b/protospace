@@ -604,13 +604,13 @@ body {
   border-radius: 4px;
 }
 
-.alert-notice {
+.alert--success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
 }
 
-.alert-alert {
+.alert--danger {
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
