@@ -12,6 +12,18 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+
+    .col-md-6.text-right
+      %button.btn.btn-default
+        = image_tag("icon_heart.svg")
+        Like
+        %span.num 20
+      .extra-button
+        - if user_signed_in? && @prototype.user_id == current_user.id
+          -# .btn.btn-default.navbar-btn
+          -#   = link_to "Edit", edit_prototype_path(@prototype)
+          .btn.btn-default.navbar-btn
+            = link_to "Delete", prototype_path(@prototype), method: :delete
   .row
     .col-md-9.image-box
       = image_tag @prototype.set_main_thumbnail, class: 'img-responsive img-size-fix'
