@@ -16,6 +16,11 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to new_prototype_url, alert: 'New prototype was unsuccessfully created'
+      # //////
+      # redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      # //////
+      # flash[:alert] = 'New prototype was unsuccessfully created'
+      # redirect_to action: :new
      end
   end
 
@@ -26,7 +31,7 @@ class PrototypesController < ApplicationController
     if @prototype.destroy
       redirect_to :root, notice: "The prototype was successfully deleted"
     else
-      render action: show, alert: "The prototype was unsuccessfully deleted"
+      render action: :show, alert: "The prototype was unsuccessfully deleted"
     end
   end
 
