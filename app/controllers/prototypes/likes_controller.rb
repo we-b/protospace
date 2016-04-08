@@ -7,12 +7,12 @@ class Prototypes::LikesController < ApplicationController
 
   def destroy
     Like.find(params[:id]).destroy
-    @prototype = Prototype.find(params[:prototype_id])
+    @prototype = Prototype.eager_load(:comments, { comments: :user }).find(params[:prototype_id])
   end
 
    private
 
   def set_prototype
-    @prototype = Prototype.find(params[:prototype_id])
+    @prototype = Prototype.eager_load(:comments, { comments: :user }).find(params[:prototype_id])
   end
 end
