@@ -24,4 +24,8 @@ class Prototype < ActiveRecord::Base
     MAXMUN_IMAGE_NUM.times { |i| sub_images[i] ||= @prototype.captured_images.build(status: "sub") }
     sub_images
   end
+
+  def posted_date
+    created_at.strftime('%b %d %a')
+  end
 end

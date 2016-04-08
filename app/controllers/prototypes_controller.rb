@@ -15,12 +15,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to new_prototype_url, alert: 'New prototype was unsuccessfully created'
-      # //////
-      # redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
-      # //////
-      # flash[:alert] = 'New prototype was unsuccessfully created'
-      # redirect_to action: :new
+      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
      end
   end
 
@@ -35,13 +30,8 @@ class PrototypesController < ApplicationController
   def update
     if @prototype.update(prototype_params)
       redirect_to ({ action: :show }), notice: 'Your prototype was successfully updated'
-      # //////
-      # redirect_to user_url, notice: 'Your prototype was successfully updated'
-      # //////
-      # flash[:notice] = 'Your prototype was successfully updated'
-      # redirect_to / render action: :show
     else
-      render action: :edit, notice: 'Your prototype was unsuccessfully updated'
+      render ({ action: :edit }), alert: 'Your prototype was unsuccessfully updated'
     end
   end
 
@@ -49,7 +39,7 @@ class PrototypesController < ApplicationController
     if @prototype.destroy
       redirect_to :root, notice: "The prototype was successfully deleted"
     else
-      render action: :show, alert: "The prototype was unsuccessfully deleted"
+      render ({ action: :show }), alert: "The prototype was unsuccessfully deleted"
     end
   end
 
