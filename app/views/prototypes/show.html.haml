@@ -21,8 +21,8 @@
         %span.num 20
       .extra-button
         - if user_signed_in? && @prototype.user_id == current_user.id
-          -# .btn.btn-default.navbar-btn
-          -#   = link_to "Edit", edit_prototype_path(@prototype)
+          .btn.btn-default.navbar-btn
+            = link_to "Edit", edit_prototype_path(@prototype)
           .btn.btn-default.navbar-btn
             = link_to "Delete", prototype_path(@prototype), method: :delete
   .row

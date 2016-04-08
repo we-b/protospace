@@ -33,7 +33,7 @@ class PrototypeImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :large do
-    process :resize_to_fit => [800, 500]
+    process :resize_to_fit => [750, 500]
   end
   #
   # version :sub_thumb do
@@ -51,8 +51,4 @@ class PrototypeImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
-  def default_url
-    '/uploads/noimage.png'
-  end
 end
