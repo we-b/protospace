@@ -11,14 +11,16 @@
         .col-md-12
           %h4 Main Thumbnail
           = f.fields_for :captured_images, @main_image do |image|
-            .cover-image-upload{ style: "background: url(#{image.object.content}) no-repeat center center; background-size: contain;" }
+            .cover-image-upload.image-box
+              = image_tag(image.object.content.large, class: 'img-responsive')
               = image.file_field :content
               = image.hidden_field :status, value: "main"
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
             = f.fields_for :captured_images, @sub_images do |image|
               %li.list-group-item.col-md-4
-                .image-upload{ style: "background: url(#{image.object.content}) no-repeat center center; background-size: contain;" }
+                .image-upload
+                  = image_tag(image.object.content, class: 'img-responsive', style: "max-height: 200px; margin: 0 auto;")
                   = image.file_field :content
                   = image.hidden_field :status, value: "sub"
                   = image.hidden_field :id, value: image.object.id
