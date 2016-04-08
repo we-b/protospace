@@ -21,7 +21,7 @@ class Prototype < ActiveRecord::Base
   MAXMUN_IMAGE_NUM = 3
   def set_sub_thumbnails
     sub_images = captured_images.sub
-    MAXMUN_IMAGE_NUM.times { |i| sub_images[i] ||= @prototype.captured_images.build(status: "sub") }
+    MAXMUN_IMAGE_NUM.times { |i| sub_images[i] ||= captured_images.build(status: "sub") }
     sub_images
   end
 
