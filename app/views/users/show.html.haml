@@ -2,7 +2,7 @@
   %header.user-nav
     .media
       .media-left
-        = image_tag(set_profile_photo(@user), alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+        = image_tag(@user.set_profile_photo, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
       .media-body
         %h4#top-aligned-media.media-heading
           = @user.name
