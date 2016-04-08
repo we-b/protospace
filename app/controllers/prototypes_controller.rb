@@ -1,5 +1,8 @@
 class PrototypesController < ApplicationController
+  before_action :set_prototype, only: :show
+
   def index
+    @prototypes = Prototype.all
   end
 
   def new
@@ -12,7 +15,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to new_prototype_url, alert: 'New prototype was unsuccessfully created'
+      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
      end
   end
 
@@ -20,6 +23,10 @@ class PrototypesController < ApplicationController
   end
 
   private
+
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
+  end
 
   def prototype_params
     params.require(:prototype).permit(

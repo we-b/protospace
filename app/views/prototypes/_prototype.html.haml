@@ -1,0 +1,11 @@
+.col-sm-4.col-md-3.proto-content
+  .thumbnail
+    = link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype)
+    .caption
+      %h3
+        = prototype.title
+      .proto-meta
+        .proto-user
+          = link_to prototype.user.name, user_path(prototype.user)
+        .proto-posted
+          = prototype.posted_date
