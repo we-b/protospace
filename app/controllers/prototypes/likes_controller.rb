@@ -6,11 +6,10 @@ class Prototypes::LikesController < ApplicationController
   end
 
   def destroy
-    Like.find(params[:id]).destroy
-    @prototype = Prototype.find(params[:prototype_id])
+    @prototype.likes.find(params[:id]).destroy
   end
 
-   private
+  private
 
   def set_prototype
     @prototype = Prototype.find(params[:prototype_id])
