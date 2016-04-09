@@ -29,7 +29,7 @@ class Prototype < ActiveRecord::Base
     created_at.strftime('%b %d %a')
   end
 
-  def fetch_curret_user_like(user)
+  def liked_by?(user)
     likes.find_by(user_id: user)
   end
 end
