@@ -1,5 +1,5 @@
 class Prototypes::LikesController < ApplicationController
-  before_action :set_prototype, only: :create
+  before_action :set_prototype, only: [:create, :destroy]
 
   def create
     @prototype.likes.create(params.permit(:user_id))
