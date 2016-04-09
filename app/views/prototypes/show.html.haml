@@ -13,7 +13,6 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
-
     .col-md-6.text-right{ id: "like" }
       = render partial: 'prototypes/like', locals: { prototype: @prototype }
     .col-md-6.text-right
