@@ -13,12 +13,9 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
-
+    .col-md-6.text-right{ id: "like" }
+      = render partial: 'prototypes/like', locals: { prototype: @prototype }
     .col-md-6.text-right
-      %button.btn.btn-default
-        = image_tag("icon_heart.svg")
-        Like
-        %span.num 20
       .extra-button
         - if user_signed_in? && @prototype.user_id == current_user.id
           .btn.btn-default.navbar-btn

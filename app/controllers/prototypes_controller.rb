@@ -20,6 +20,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @likes = @prototype.likes
   end
 
   def edit
