@@ -41,7 +41,11 @@
         = @prototype.concept
     .col-md-3
       %h4 Tag List
-      = render partial: 'prototypes/tag_list', locals: { prototype: @prototype }
+      %ul.proto-tag-list.list-inline
+        - @prototype.tag_list.each do |val|
+          %li
+            = link_to val, tag_path(val), class: "btn btn-default"
+
     %h4.col-md-12
       Comments
       %span#comments-number.num  (#{@prototype.comments.size})
