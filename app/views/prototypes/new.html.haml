@@ -35,7 +35,7 @@
         .col-md-12
           %h4 Tag List
           .row
-          - %w(UI/UX Ruby Application).each do |val|
+          - Settings.optional_tags.each do |val|
             .col-md-3
               = text_field_tag "prototype[tag_list][]", "", placeholder: val
       .row.text-center.proto-btn
