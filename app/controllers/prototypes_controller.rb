@@ -63,6 +63,10 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:id, :content, :status]
-    )
+    ).merge(tag_list: tag_params)
+  end
+
+  def tag_params
+    params.require(:prototype).require(:tag_list)
   end
 end
