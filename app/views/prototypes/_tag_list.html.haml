@@ -1,0 +1,4 @@
+%ul.proto-tag-list.list-inline
+  - prototype.tag_list.each do |val|
+    %li
+      = link_to val, tag_path(val), class: "btn btn-default"

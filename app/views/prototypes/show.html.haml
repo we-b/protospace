@@ -41,11 +41,7 @@
         = @prototype.concept
     .col-md-3
       %h4 Tag List
-      %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
-        %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+      = render partial: 'prototypes/tag_list', locals: { prototype: @prototype }
     %h4.col-md-12
       Comments
       %span#comments-number.num  (#{@prototype.comments.size})

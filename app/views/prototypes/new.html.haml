@@ -32,5 +32,18 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+        .col-md-12
+          %h4 Tag List
+          .row
+          - %w(UI/UX Ruby Application).each do |val|
+            .col-md-3
+              = text_field_tag "prototype[tag_list][]", "", placeholder: val
+          -# = f.fields_for :tags do |t|
+          -#     .col-md-3
+          -#       = t.text_field :'0', placeholder: 'Web'
+          -#     .col-md-3
+          -#       = t.text_field :'1', placeholder: 'アプリ'
+          -#     .col-md-3
+          -#       = t.text_field :'2', placeholder: 'iOS'
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"
