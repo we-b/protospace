@@ -64,7 +64,11 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
+    config (1.0.0.beta3)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.0.0)
     debug_inspector (0.0.2)
+    deep_merge (1.0.1)
     devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -201,6 +205,7 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
+  config
   devise
   erb2haml
   haml-rails
