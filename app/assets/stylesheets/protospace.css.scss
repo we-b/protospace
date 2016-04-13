@@ -627,7 +627,7 @@ body {
   text-decoration: none;
 }
 
-.tag__header {
+.tag-header {
   margin-bottom: 30px;
   border-bottom: solid 1px #337ab7;
   height: 40px;
@@ -637,19 +637,18 @@ body {
   font-weight: 400;
 }
 
-.tag__name {
+.tag-name {
   margin: 10px 0;
   width: 100%;
   height: 40px;
+  text-align: center;
   background: #70ADF3;
   color: white;
-  text-align: center;
   font-size: 30px;
   font-weight: 200;
-
 }
 
-.tag__project {
+.tag-project {
   height: 10px;
   text-align: center;
 }

@@ -1,6 +1,6 @@
 .col-sm-4.col-sm-3
   = link_to tag_path(tag.name), class: 'tag thumbnail' do
-    .tag__name
+    .tag-name
       = tag.name
-    .tag__project
+    .tag-project
       = "#{tag.taggings_count} project"
