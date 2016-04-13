@@ -4,4 +4,9 @@ Rails.application.routes.draw do
 
   resources :prototypes
   resources :users, only: [:show, :edit, :update]
+
+  scope module: :prototypes do
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: :create
+  end
 end

@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+  before_action :set_prototype, only: [:edit, :update, :destroy]
+  before_action :set_new_comment, only: [:show, :update]
 
   def index
     @prototypes = Prototype.all
@@ -20,6 +21,8 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @prototype = Prototype.eager_load(:comments, { comments: :user }).find(params[:id])
+    @likes = @prototype.likes
   end
 
   def edit
@@ -47,6 +50,10 @@ class PrototypesController < ApplicationController
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
+  end
+
+  def set_new_comment
+    @comment = Comment.new
   end
 
   def prototype_params
