@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   scope module: :prototypes do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: :create
+    resources :tags, only: [:index, :show], param: :tag_name
   end
 end
