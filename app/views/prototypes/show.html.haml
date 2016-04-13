@@ -46,20 +46,3 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
-    %h4.col-md-12
-      Comments
-      %span#comments-number.num  (#{@prototype.comments.size})
-    .col-md-8
-      #comments
-        = render partial: 'prototypes/comment', collection: @prototype.comments
-      %form.form-inline
-      - if user_signed_in?
-        = form_for @comment, remote: true do |f|
-          = f.hidden_field :user_id, value: current_user.id
-          = f.hidden_field :prototype_id, value: @prototype.id
-          %h4 Write a comment
-          .row
-            .form-group.col-md-10
-              = f.text_area :content, require: true, rows: "3", placeholder: "Your comments", id: "comment-field", class: "form-control", style: "resize: vertical;"
-            .form-group.col-md-2
-              = f.submit "COMMENT", class: "button btn btn-primary"
