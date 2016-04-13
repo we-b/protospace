@@ -1,0 +1,13 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+
+.filter-nav
+  .container
+    .row
+      %ul.nav.nav-pills.col-lg-11
+        %li.btn-default.btn-popular
+          = link_to "Popular", "#"
+        %li.btn-default.btn-popular
+          = link_to "Newest", "#"
+      = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
