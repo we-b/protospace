@@ -2,5 +2,5 @@ $('#comments-number').text('(#{ @prototype.comments.size })');
 $('#comment-field').val('');
 :plain
   $('#comments').html(
-    '#{ j render partial: 'prototypes/comment', collection: @prototype.comments }'
+   '#{ j render partial: 'prototypes/comment', collection: @prototype.comments }'
   );

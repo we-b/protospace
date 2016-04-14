@@ -14,6 +14,6 @@ class Prototypes::CommentsController < ApplicationController
     params.require(:comment).permit(
       :user_id,
       :content
-    )
+    )		
   end
 end
