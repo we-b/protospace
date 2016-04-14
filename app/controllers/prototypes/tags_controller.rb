@@ -5,6 +5,6 @@ class Prototypes::TagsController < ApplicationController
 
   def show
     @tag = ActsAsTaggableOn::Tag.find_by(name: params[:tag_name])
-    @prototypes = Prototype.tagged_with(@tag).order(likes_count: :desc)
+    @prototypes = Prototype.tagged_with(@tag).eager_load(:main_image, :user).order(likes_count: :desc)
   end
 end

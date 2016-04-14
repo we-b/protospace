@@ -4,6 +4,8 @@ class Prototype < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_one :main_image, class_name: "CapturedImage"
+
   accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images, limit: 4
 
   acts_as_taggable

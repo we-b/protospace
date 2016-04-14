@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   before_action :set_new_comment, only: [:show, :update]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.eager_load(:main_image, :user)
   end
 
   def new
@@ -26,7 +26,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @main_image = @prototype.captured_images.main.first
+    @main_image = @prototype.main_image
     @sub_images = @prototype.set_sub_thumbnails
   end
 
