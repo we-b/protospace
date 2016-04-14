@@ -6,8 +6,11 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.btn-default.btn-popular
-          = link_to "Popular", "#"
-        %li.btn-default.btn-popular
-          = link_to "Newest", "#"
+        %li.btn-default#js-popular
+          = link_to "Popular", popular_index_path
+        %li.btn-default#js-newest
+          = link_to "Newest", newest_index_path
       = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
+
+:javascript
+  $('#js-#{@type}').addClass('active')
