@@ -19,10 +19,6 @@ class Prototype < ActiveRecord::Base
     attributed['content'].blank?
   end
 
-  def set_main_thumbnail
-    captured_images.main.first.content
-  end
-
   MAXMUN_IMAGE_NUM = 3
   def set_sub_thumbnails
     sub_images = captured_images.sub
