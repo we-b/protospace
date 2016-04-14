@@ -24,7 +24,7 @@
             = link_to "Delete", prototype_path(@prototype), method: :delete
   .row
     .col-md-9.image-box
-      = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+      = image_tag(@prototype.main_image.content.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
     .col-md-3
       %ul.proto-sub-list.list-group
         - @prototype.captured_images.sub.each do |image|
