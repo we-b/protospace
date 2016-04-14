@@ -1,0 +1,7 @@
+= render partial: 'prototypes/semi_header'
+
+.container
+  .row
+    .tag-header
+      %span= "# #{@tag}"
+    = render partial: 'prototypes/prototype', collection: @prototypes
