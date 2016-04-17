@@ -1,8 +1,8 @@
 $(document).on("ready page:load", function(){
-  const mainImageId = "#main-image"
-  const subFirstImageId = "#sub-image-1"
-  const subSecondImageId = "#sub-image-2"
-  const subThirdImageId = "#sub-image-3"
+  const mainImageId = "#js-main-image"
+  const subFirstImageId = "#js-sub-image-1"
+  const subSecondImageId = "#js-sub-image-2"
+  const subThirdImageId = "#js-sub-image-3"
 
   function uploadImage(idName){
     $(idName + ' input[type=file]').change(function(){
