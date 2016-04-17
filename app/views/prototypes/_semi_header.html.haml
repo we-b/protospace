@@ -6,11 +6,8 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.btn-default#js-popular
+        %li.btn-default{ class: "#{ 'active' if type == 'popular' }"}
           = link_to "Popular", popular_index_path
-        %li.btn-default#js-newest
+        %li.btn-default{ class: "#{ 'active' if type == 'newest' } "}
           = link_to "Newest", newest_index_path
       = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
-
-:javascript
-  $('#js-#{@type}').addClass('active')
