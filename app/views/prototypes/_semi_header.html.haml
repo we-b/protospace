@@ -6,8 +6,8 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.btn-default.btn-popular
-          = link_to "Popular", "#"
-        %li.btn-default.btn-popular
-          = link_to "Newest", "#"
+        %li.btn-default{ class: "#{ 'active' if type == 'popular' }"}
+          = link_to "Popular", popular_index_path
+        %li.btn-default{ class: "#{ 'active' if type == 'newest' } "}
+          = link_to "Newest", newest_index_path
       = link_to "VIEW TAGS", tags_path, class: "btn btn-default col-lg-1"
