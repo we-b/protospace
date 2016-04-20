@@ -15,6 +15,8 @@ class Prototype < ActiveRecord::Base
             :concept,
             presence: true
 
+  paginates_per 8
+
   def reject_sub_images(attributed)
     attributed['content'].blank?
   end
