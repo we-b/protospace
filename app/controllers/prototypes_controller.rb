@@ -5,7 +5,7 @@ class PrototypesController < ApplicationController
   def index
     @prototypes = Prototype.eager_load(:main_image, :user)
                            .page(params[:page])
-    @type = 'random'
+    @type = 'normal'
   end
 
   def new
