@@ -18,6 +18,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'acts-as-taggable-on'
 gem 'config'
+gem 'fog'
+gem 'config'
 
 group :development, :test do
   gem 'byebug'
