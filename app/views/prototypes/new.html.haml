@@ -10,9 +10,9 @@
       .row
         .col-md-12
           %h4 Main Thumbnail
-          .cover-image-upload#main_image_uploader
+          .cover-image-upload#js-main-image
             = f.fields_for :captured_images do |image|
-              %img
+              %img.image-preview-prototype
               = image.file_field :content, required: true
               = image.hidden_field :status, value: "main"
         .col-md-12
@@ -20,9 +20,9 @@
           %ul.proto-sub-list.list-group
             - 3.times do |i|
               %li.list-group-item.col-md-4
-                .image-upload
+                .image-upload{ id: "js-sub-image-#{i+1}"}
                   = f.fields_for :captured_images do |image|
-                    %img
+                    %img.image-preview-prototype
                     = image.file_field :content
                     = image.hidden_field :status, value: "sub"
       .row.proto-description
