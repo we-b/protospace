@@ -3,6 +3,9 @@ class Prototypes::CommentsController < ApplicationController
 
   def create
     @prototype.comments.create(comment_params)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

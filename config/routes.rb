@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   scope module: :prototypes do
     resources :popular, only: :index
     resources :newest, only: :index
-    resources :likes, only: [:create, :destroy], defaults: { format: :json }
-    resources :comments, only: :create, defaults: { format: :json }
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: :create
     resources :tags, only: [:index, :show], param: :tag_name
   end
 end

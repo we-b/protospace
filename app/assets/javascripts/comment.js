@@ -3,20 +3,13 @@ $(document).on('ready', function() {
     $.ajax({
       url: "/comments",
       type: "POST",
-      dataType: "json",
-      success: function(data){
-        addComment(data)
+      done: function(data){
+        console.log("成功")
       },
-      error: function(data){
-        alert(xhr.status, status, error.toString());
+      fail: function(jqXHR, textStatus, errorThrown){
+        alert(jqXHR, textStatus, errorThrown);
       }
     })
-  }
-
-  function addComment(data) {
-    debugger
-    $('#comments-number').text(data.commentNum);
-    $('#comment-field').val('');
   }
 
   $('#js-comment').on('click', function(){
