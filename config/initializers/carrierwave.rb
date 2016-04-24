@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
      config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/#{config.fog_directory}"
 
     else
-     config.fog_directory = 'test.dummy'
+     config.fog_directory = 'dummy'
      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/test.dummy'
   end
 end
