@@ -15,6 +15,7 @@ class Prototype < ActiveRecord::Base
             :concept,
             presence: true
 
+  #kaminari
   paginates_per 8
 
   def reject_sub_images(attributed)
