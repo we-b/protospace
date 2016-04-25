@@ -3,7 +3,8 @@ class PrototypesController < ApplicationController
   before_action :set_new_comment, only: [:show, :update]
 
   def index
-    @prototypes = Prototype.eager_load(:main_image, :user).order("RAND()")
+    @prototypes = Prototype.eager_load(:main_image, :user)
+                           .page(params[:page])
     @type = 'normal'
   end
 
