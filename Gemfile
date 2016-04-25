@@ -19,12 +19,22 @@ gem 'rmagick'
 gem 'acts-as-taggable-on'
 gem 'config'
 gem 'kaminari'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
+  gem "rspec-rails"
+  gem "factory_girl_rails"
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :test do
+  gem "faker"
+  gem "capybara"
+  gem "database_cleaner"
+  gem "launchy"
 end
