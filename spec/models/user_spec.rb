@@ -25,9 +25,9 @@ describe User do
     end
 
     it "is invalid without a password_confirmation although with a password" do
-      user = build(:user, password_confirmation: "0000000000")
+      user = build(:user, password_confirmation: "hogehoge")
       user.valid?
-      expect(user.errors[:password_confirmation][0]).to include("doesn't match Password")
+      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
 
     it "is invalid with a duplicate email address" do
