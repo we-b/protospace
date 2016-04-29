@@ -36,5 +36,11 @@ describe User do
       another_user.valid?
       expect(another_user.errors[:email]).to include("has already been taken")
     end
+
+    it "is invalid with a password that has less than 7 characters " do
+      user = build(:user, password: "0000000", password_confirmation: "0000000")
+      user.valid?
+      expect(user.errors[:password][0]).to include("is too short")
+    end
   end
 end
