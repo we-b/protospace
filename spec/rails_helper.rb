@@ -3,8 +3,10 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/poltergeist'
 
 ActiveRecord::Migration.maintain_test_schema!
+Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
