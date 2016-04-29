@@ -13,7 +13,7 @@ gem 'pry-rails'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'bootstrap-sass'
-gem 'devise'
+gem 'devise', '4.0'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'acts-as-taggable-on'
@@ -37,4 +37,5 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "launchy"
+  gem "poltergeist"
 end
