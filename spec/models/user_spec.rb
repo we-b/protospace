@@ -3,7 +3,6 @@ require 'rails_helper'
 describe User do
   describe '#create' do
 
-    let(:user) { create(:user) }
 
     it "is valid with all information" do
       expect(build(:user)).to be_valid
@@ -34,6 +33,7 @@ describe User do
     end
 
     it "is invalid with a duplicate email address" do
+      user = create(:user)
       another_user = build(:user, email: user.email)
       another_user.valid?
       expect(another_user.errors[:email]).to include("has already been taken")
