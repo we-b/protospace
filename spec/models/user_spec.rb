@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe User do
   describe '#create' do
-
-
     it "is valid with all information" do
       expect(build(:user)).to be_valid
     end
@@ -38,7 +36,5 @@ describe User do
       another_user.valid?
       expect(another_user.errors[:email]).to include("has already been taken")
     end
-
   end
 end
-
