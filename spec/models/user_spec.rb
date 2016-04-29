@@ -2,13 +2,13 @@ require 'rails_helper'
 
 describe User do
   describe '#create' do
-    context "when it is valid" do
+    context do
       it "is valid with all information" do
         expect(build(:user)).to be_valid
       end
     end
 
-    context "when it is invalid" do
+    context do
       it "is invalid without a name" do
         user = build(:user, name: nil)
         user.valid?
