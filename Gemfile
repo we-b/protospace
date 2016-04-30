@@ -18,6 +18,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'acts-as-taggable-on'
 gem 'config'
+gem 'kaminari'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
@@ -35,4 +37,5 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "launchy"
+  gem "poltergeist"
 end
