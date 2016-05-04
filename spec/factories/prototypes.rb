@@ -3,7 +3,7 @@ FactoryGirl.define do
     title       { Faker::Name.name }
     catch_copy  { Faker::Lorem.word }
     concept     { Faker::Lorem.sentence }
-    user_id     { Faker::Number.number(2) }
+    user
 
     after(:build) do |prototype|
       prototype.main_image = build(:main_image)
