@@ -47,14 +47,14 @@ RSpec.feature 'Sign in', type: :feature, js: true do
       click_button 'Sign in'
     end
 
+
     def post_prototype_by(user)
-      find('#prototype_user_id', visible: false).set(user.id)
+      find('#prototype_user_id', visible: false).set(prototype.user.id)
       fill_in 'prototype_title', with: prototype.title
       fill_in 'prototype_catch_copy', with: prototype.catch_copy
       fill_in 'prototype_concept', with: prototype.concept
       attach_file 'prototype[captured_images_attributes][0][content]', File.join(Rails.root, '/spec/factories/img/sample.png')
       1.upto(3) do |i|
-        # attach_file "prototype[captured_images_attributes][#{i}][content]", prototype.captured_images[i].content
         attach_file "prototype[captured_images_attributes][#{i}][content]", File.join(Rails.root, '/spec/factories/img/sample.png')
       end
       click_on 'PUBLISH'
