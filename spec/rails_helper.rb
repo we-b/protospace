@@ -7,7 +7,6 @@ require 'capybara/poltergeist'
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :poltergeist
-Capybara.ignore_hidden_elements = false
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
