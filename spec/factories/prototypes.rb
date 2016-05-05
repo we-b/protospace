@@ -11,11 +11,11 @@ FactoryGirl.define do
 
     trait :with_sub_images do
       transient do
-        maxinum_sub_images 3
+        sub_images_count 3
       end
 
       after(:build) do |prototype, evaluator|
-        prototype.captured_images << build_list(:sub_image, evaluator.maxinum_sub_images)
+        prototype.captured_images << build_list(:sub_image, evaluator.sub_images_count)
       end
     end
   end
