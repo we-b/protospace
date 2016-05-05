@@ -32,7 +32,7 @@ RSpec.feature 'Sign in', type: :feature do
 
 
     def post_prototype_by(user)
-      find('#prototype_user_id', visible: false).set(prototype.user.id)
+      find('#prototype_user_id', visible: false).set(login_user.id)
       fill_in 'prototype_title', with: prototype.title
       fill_in 'prototype_catch_copy', with: prototype.catch_copy
       fill_in 'prototype_concept', with: prototype.concept
