@@ -397,7 +397,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   config
   database_cleaner
-  devise (= 4.0)
+  devise
   erb2haml
   factory_girl_rails
   faker
