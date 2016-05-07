@@ -44,4 +44,16 @@ describe Prototype do
       end
     end
   end
+
+  describe "#liked_by?(user)" do
+    context "with a liking user" do
+      it "returns a liking record" do
+        user = create(:user_with_id)
+        prototype = create(:prototype_with_id_and_user_id)
+        like = create(:like_with_prototype_id_and_user_id)
+        expect(prototype.liked_by?(user)).to eq prototype.likes.find_by(user_id: user)
+      end
+    end
+
+  end
 end
