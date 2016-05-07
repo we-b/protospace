@@ -30,14 +30,14 @@ describe Prototype do
   end
 
   describe "#posted_date" do
-    context "with matching dates" do
+    context "with a matching date" do
       it "returns a matching posted_date" do
         prototype = build(:prototype)
         expect(prototype.posted_date).to eq prototype.created_at.strftime('%b %d %a')
       end
     end
 
-    context "without matching dates" do
+    context "without a matching date" do
       it "doesn't returns a matching posted_date" do
         prototype = build(:prototype)
         expect(prototype.posted_date).not_to eq prototype.created_at
