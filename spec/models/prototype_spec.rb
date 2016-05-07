@@ -36,5 +36,12 @@ describe Prototype do
         expect(prototype.posted_date).to eq prototype.created_at.strftime('%b %d %a')
       end
     end
+
+    context "without matching dates" do
+      it "doesn't returns a matching posted_date" do
+        prototype = build(:prototype)
+        expect(prototype.posted_date).not_to eq prototype.created_at
+      end
+    end
   end
 end
