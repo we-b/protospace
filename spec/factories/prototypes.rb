@@ -5,6 +5,11 @@ FactoryGirl.define do
     concept     { Faker::Lorem.sentence }
     created_at  { Faker::Time.between(2.days.ago, Time.now) }
 
+    factory :prototype_with_id_and_user_id do
+      sequence(:id) { |n| n }
+      sequence(:user_id) { |n| n }
+    end
+
     after(:build) do |prototype|
       prototype.main_image = build(:main_image)
     end
