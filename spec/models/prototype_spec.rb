@@ -28,4 +28,13 @@ describe Prototype do
       end
     end
   end
+
+  describe "#posted_date" do
+    context "with matching dates" do
+      it "returns a matching posted_date" do
+        prototype = build(:prototype)
+        expect(prototype.posted_date).to eq "#{prototype.created_at.strftime('%b %d %a')}"
+      end
+    end
+  end
 end
