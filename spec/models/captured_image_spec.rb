@@ -8,6 +8,12 @@ describe CapturedImage do
         captured_image.valid?
         expect(captured_image.errors[:content]).to include("can't be blank")
       end
+
+      it "is invalid without a status" do
+        captured_image = build(:captured_image)
+        captured_image.valid?
+        expect(captured_image.errors[:status]).to include("can't be blank")
+      end
     end
   end
 end
