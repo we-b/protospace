@@ -1,14 +1,10 @@
 FactoryGirl.define do
   factory :prototype, class: Prototype do
+    association :user
     title       { Faker::Name.name }
     catch_copy  { Faker::Lorem.word }
     concept     { Faker::Lorem.sentence }
     created_at  "2016-05-07"
-
-    factory :prototype_with_id_and_user_id do
-      sequence(:id) { |n| n }
-      sequence(:user_id) { |n| n }
-    end
 
     after(:build) do |prototype|
       prototype.main_image = build(:main_image)

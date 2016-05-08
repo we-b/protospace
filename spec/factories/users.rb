@@ -8,9 +8,5 @@ FactoryGirl.define do
     profile { Faker::Hacker.say_something_smart }
     position { Faker::Company.profession }
     occupation { Faker::Company.catch_phrase }
-
-    factory :user_with_id do
-      sequence(:id) { |n| n }
-    end
   end
 end
