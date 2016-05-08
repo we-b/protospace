@@ -1,7 +1,9 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
   factory :captured_image, class: CapturedImage do
     prototype_id   { Faker::Number.number(2) }
-    content        { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/img/sample.png')) }
+    content        { fixture_file_upload("spec/fixtures/img/sample.png", 'image/png') }
 
     trait :main do
       status   :main
