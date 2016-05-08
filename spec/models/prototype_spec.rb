@@ -54,6 +54,5 @@ describe Prototype do
         expect(prototype.liked_by?(user)).to eq prototype.likes.find_by(user_id: user)
       end
     end
-
   end
 end
