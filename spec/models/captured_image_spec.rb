@@ -2,6 +2,13 @@ require 'rails_helper'
 
 describe CapturedImage do
   describe '#create' do
+    context "with valid attributes" do
+      it "is valid with content and status" do
+        captured_image = build(:captured_image, :main)
+        expect(captured_image).to be_valid
+      end
+    end
+
     context "without valid attributes" do
       it "is invalid without a content" do
         captured_image = build(:captured_image, :main, content: nil)
