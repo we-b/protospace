@@ -3,7 +3,7 @@ FactoryGirl.define do
     title       { Faker::Name.name }
     catch_copy  { Faker::Lorem.word }
     concept     { Faker::Lorem.sentence }
-    created_at  { Faker::Time.between(2.days.ago, Time.now) }
+    created_at  "2016-05-07"
 
     factory :prototype_with_id_and_user_id do
       sequence(:id) { |n| n }
