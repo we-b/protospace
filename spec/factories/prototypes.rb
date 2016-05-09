@@ -4,7 +4,7 @@ FactoryGirl.define do
     title       { Faker::Name.name }
     catch_copy  { Faker::Lorem.word }
     concept     { Faker::Lorem.sentence }
-    created_at  "2016-05-07"
+    created_at  { Faker::Time.between(2.days.ago, Time.now) }
 
     after(:build) do |prototype|
       prototype.main_image = build(:main_image)
