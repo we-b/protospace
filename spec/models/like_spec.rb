@@ -2,13 +2,16 @@ require 'rails_helper'
 
 describe Like do
   describe 'association' do
-    let(:like) { create(:like) }
-    it 'should be associated with a prototype' do
-      expect(like.prototype).to be_present
+    it 'is associated with a prototype' do
+      prototype = create(:prototype)
+      like = create(:like, prototype: prototype)
+      expect(like.prototype).to eq prototype
     end
 
-    it 'should be associated with a user' do
-      expect(like.user).to be_present
+    it 'is associated with a user' do
+      user = create(:user)
+      like = create(:like, user: user)
+      expect(like.user).to eq user
     end
   end
 end
