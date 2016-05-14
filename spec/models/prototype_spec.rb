@@ -58,11 +58,9 @@ describe Prototype do
   end
 
   describe "#set_sub_thumbnails" do
-    context "with correct number of elements in an array" do
-      it "returns an array with three elements" do
-        prototype = create(:prototype, :with_sub_images)
-        expect(prototype.set_sub_thumbnails.length).to eq 3
-      end
+    it "returns an array containing sub_images" do
+      prototype = create(:prototype, :with_sub_images)
+      expect(prototype.set_sub_thumbnails).to eq prototype.captured_images
     end
   end
 end
