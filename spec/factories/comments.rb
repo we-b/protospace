@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :comment do
-    association  :prototype
-    association  :user
+    prototype
+    user
     content      { Faker::Lorem.sentence }
   end
 end
