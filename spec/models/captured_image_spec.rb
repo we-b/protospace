@@ -9,14 +9,16 @@ describe CapturedImage do
       end
     end
 
-    context "without valid attributes" do
-      it "is missing a content" do
+    context "without content attribute" do
+      it "returns error" do
         captured_image = build(:captured_image, :main, content: nil)
         captured_image.valid?
         expect(captured_image.errors[:content]).to include("can't be blank")
       end
+    end
 
-      it "is missing a status" do
+    context "without status attribute" do
+      it "returns error" do
         captured_image = build(:captured_image)
         captured_image.valid?
         expect(captured_image.errors[:status]).to include("can't be blank")
