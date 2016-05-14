@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Comment do
   describe 'association' do
-    let(:comment) { create(:comment) }
     it 'is associated with a prototype' do
       prototype = create(:prototype)
       comment = create(:comment, prototype: prototype)
