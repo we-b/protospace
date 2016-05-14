@@ -23,18 +23,10 @@ describe CapturedImage do
       end
     end
 
-    let(:content_type) { create(:prototype).main_image.content.content_type }
-
-    context "with correct format" do
-      it "has the png format" do
-        expect(content_type).to eq('image/png')
-      end
-    end
-
-    context "with incorrect format" do
-      it "doesn't have the png format" do
-        expect(content_type).not_to eq('image/jpg')
-      end
+    it "has the wrong content format" do
+      image = build(:captured_image, :main, content: fixture_file_upload("img/sample.tiff", 'image/tiff'))
+      image.valid?
+      expect(image.errors[:content][0]).to include("You are not allowed to upload")
     end
   end
 end
