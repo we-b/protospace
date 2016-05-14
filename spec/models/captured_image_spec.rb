@@ -19,7 +19,7 @@ describe CapturedImage do
 
     context "without status attribute" do
       it "returns error" do
-        captured_image = build(:captured_image)
+        captured_image = build(:captured_image, status: nil)
         captured_image.valid?
         expect(captured_image.errors[:status]).to include("can't be blank")
       end
