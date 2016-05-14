@@ -64,12 +64,5 @@ describe Prototype do
         expect(prototype.set_sub_thumbnails.length).to eq 3
       end
     end
-
-    context "with wrong number of elements in an array" do
-      it "returns an array without three elements" do
-        prototype = create(:prototype, :with_sub_images)
-        expect(prototype.set_sub_thumbnails.length).not_to eq 2
-      end
-    end
   end
 end
