@@ -1,6 +1,35 @@
 require 'rails_helper'
 
 describe Prototype do
+  describe 'associations' do
+    it 'is associated with a user' do
+      user = create(:user)
+      prototype = create(:prototype, user: user)
+      expect(prototype.user).to eq user
+    end
+
+    describe 'with captured_images' do
+
+    end
+
+    describe 'with comments' do
+      let(:comments_count) { 5 }
+      let!(:prototype) { create(:prototype, :with_comments, comments_count: comments_count) }
+
+      it 'is associated with comments' do
+        expect(prototype.comments.size).to eq comments_count
+      end
+
+      it 'deletes the comments when prototype is deleted' do
+        expect{ prototype.destroy }.to change(Comment, :count).by(-1*comments_count)
+      end
+    end
+
+    describe 'with likes' do
+
+    end
+  end
+
   describe '#create' do
     context "with valid attributes" do
       it "has a valid factory" do
