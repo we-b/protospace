@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe Prototype do
+  describe 'association' do
+    it 'is associated with a user' do
+      user = create(:user)
+      prototype = create(:prototype, user: user)
+      expect(prototype.user).to eq user
+    end
+  end
+
   describe '#create' do
     context "with valid attributes" do
       it "has a valid factory" do
