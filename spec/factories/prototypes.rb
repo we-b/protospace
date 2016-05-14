@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :prototype, class: Prototype do
-    association :user
     title       { Faker::Name.name }
     catch_copy  { Faker::Lorem.word }
     concept     { Faker::Lorem.sentence }
     created_at  { Faker::Time.between(2.days.ago, Time.now) }
+    user
 
     after(:build) do |prototype|
       prototype.main_image = build(:main_image)
