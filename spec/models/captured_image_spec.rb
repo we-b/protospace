@@ -22,5 +22,15 @@ describe CapturedImage do
         expect(captured_image.errors[:status]).to include("can't be blank")
       end
     end
+
+    let(:content_type) { create(:prototype).main_image.content.content_type }
+
+    it "has the png format" do
+      expect(content_type).to eq('image/png')
+    end
+
+    it "doesn't have the png format" do
+      expect(content_type).not_to eq('image/jpg')
+    end
   end
 end
