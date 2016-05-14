@@ -31,4 +31,12 @@ describe CapturedImage do
       expect(image.errors[:content][0]).to include("You are not allowed to upload")
     end
   end
+
+  describe 'association' do
+    it 'is associated with a prototype' do
+      prototype = create(:prototype)
+      captured_image = create(:captured_image, :main, prototype: prototype)
+      expect(captured_image.prototype).to eq prototype
+    end
+  end
 end
