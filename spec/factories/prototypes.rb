@@ -7,7 +7,7 @@ FactoryGirl.define do
     user
 
     after(:build) do |prototype|
-      prototype.main_image = build(:main_image)
+      prototype.main_image = build(:main_image, prototype: prototype)
     end
 
     trait :with_sub_images do
