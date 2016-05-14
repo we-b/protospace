@@ -25,12 +25,16 @@ describe CapturedImage do
 
     let(:content_type) { create(:prototype).main_image.content.content_type }
 
-    it "has the png format" do
-      expect(content_type).to eq('image/png')
+    context "with correct format" do
+      it "has the png format" do
+        expect(content_type).to eq('image/png')
+      end
     end
 
-    it "doesn't have the png format" do
-      expect(content_type).not_to eq('image/jpg')
+    context "with incorrect format" do
+      it "doesn't have the png format" do
+        expect(content_type).not_to eq('image/jpg')
+      end
     end
   end
 end
