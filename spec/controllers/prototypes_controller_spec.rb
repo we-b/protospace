@@ -1,23 +1,22 @@
 require 'rails_helper'
 
 describe PrototypesController do
+   let(:user) { create(:user) }
+   let(:params) {{
+     id: user.id,
+     user: {
+       name: user.name,
+       email: user.email,
+       position: user.position,
+       profile: user.profile,
+       occupation: user.occupation
+     }
+   }}
   context 'with user login' do
     before { login_user }
-    let(:user) { create(:user) }
   end
 
   context 'without user login' do
-    let(:user) { create(:user) }
-    let(:params) {{
-      id: user.id,
-      user: {
-        name: user.name,
-        email: user.email,
-        position: user.position,
-        profile: user.profile,
-        occupation: user.occupation
-      }
-    }}
     describe 'GET #new' do
       it 'redirects sign_in page' do
         get :new
