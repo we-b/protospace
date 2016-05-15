@@ -1,19 +1,58 @@
 require 'rails_helper'
 
 describe PrototypesController do
-   let(:user) { create(:user) }
+   let(:prototype) { create(:prototype) }
    let(:params) {{
-     id: user.id,
-     user: {
-       name: user.name,
-       email: user.email,
-       position: user.position,
-       profile: user.profile,
-       occupation: user.occupation
+     id: prototype.id,
+     prototype: {
+       title: prototype.title,
+       catch_copy: prototype.catch_copy,
+       concept: prototype.concept
      }
    }}
+
   context 'with user login' do
     before { login_user }
+    describe 'GET #index' do
+
+    end
+
+    describe 'GET #new' do
+
+    end
+
+    describe 'POST #create' do
+
+    end
+
+    describe 'GET #show' do
+      it 'assigns the requested prototype to @prototype' do
+        get :show, id: prototype
+        expect(assigns(:prototype)).to eq prototype
+      end
+      
+      it 'assigns likes associated with prototype to @likes' do
+        get :show, id: prototype
+        expect(assigns(:likes)).to eq prototype.likes
+      end
+
+      it 'renders the :show template' do
+        get :show, id: prototype
+        expect(response).to render_template :show
+      end
+    end
+
+    describe 'GET #edit' do
+
+    end
+
+    describe 'PATCH #update' do
+
+    end
+
+    describe 'DELETE #destroy' do
+
+    end
   end
 
   context 'without user login' do
@@ -33,7 +72,7 @@ describe PrototypesController do
 
     describe 'GET #edit' do
       it 'redirects sign_in page' do
-        get :edit, id: user.id
+        get :edit, id: prototype.id
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -47,7 +86,7 @@ describe PrototypesController do
 
     describe 'DELETE #destroy' do
       it 'redirects sign_in page' do
-        delete :destroy, id: user.id
+        delete :destroy, id: prototype
         expect(response).to redirect_to new_user_session_path
       end
     end
