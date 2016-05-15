@@ -28,4 +28,38 @@ describe UsersController do
       expect(response).to render_template :edit
     end
   end
+
+  describe 'PATCH #update' do
+    let(:params) {{
+      id: user.id,
+      user: {
+        name: 'hoge',
+        email: user.email,
+        position: user.position,
+        profile: user.profile,
+        occupation: user.occupation
+      }
+    }}
+
+    it 'assigns the requested user to @user' do
+      patch :update, params
+      expect(assigns(:user)).to eq user
+    end
+
+    it 'changes @user\'s attribtues' do
+      patch :update, params
+      user.reload
+      expect(user.name).to eq 'hoge'
+    end
+
+    it 'redirects root path' do
+      patch :update, params
+      expect(response).to redirect_to root_path
+    end
+
+    it 'sends flash messages' do
+      patch :update, params
+      expect(flash[:notice]).to be_present
+    end
+  end
 end
