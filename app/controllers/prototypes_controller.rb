@@ -1,6 +1,7 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:edit, :update, :destroy]
   before_action :set_new_comment, only: [:show, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.eager_load(:main_image, :user)
