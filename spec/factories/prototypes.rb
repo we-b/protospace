@@ -5,7 +5,7 @@ FactoryGirl.define do
     concept     { Faker::Lorem.sentence }
 
     after(:build) do |prototype|
-      prototype.main_image = build(:main_image)
+      prototype.main_image = create(:main_image, prototype: prototype)
     end
 
     trait :with_sub_images do
