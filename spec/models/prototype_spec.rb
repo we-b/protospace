@@ -92,4 +92,12 @@ describe Prototype do
       expect(prototype.set_sub_thumbnails).to eq prototype.captured_images
     end
   end
+
+  describe "#reject_sub_images(attributed)" do
+    it "doesn't save a record with nil content" do
+      captured_sub_image = build(:captured_image, :sub, content: nil)
+      captured_sub_image.valid?
+      expect(captured_sub_image.errors[:content]).to include("can't be blank")
+    end
+  end
 end
