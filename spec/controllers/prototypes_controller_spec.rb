@@ -10,7 +10,15 @@ describe PrototypesController do
   context 'with user login' do
     before { login_user }
     describe 'GET #index' do
+      it 'assings the requested prototypes to @prototypes' do
+        get :index
+        expect(assigns(:prototypes)).to include prototype
+      end
 
+      it 'renders the :index template' do
+        get :index
+        expect(response).to render_template :index
+      end
     end
 
     describe 'GET #new' do
