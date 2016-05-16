@@ -31,11 +31,9 @@ describe PrototypesController do
       end
       
       it 'assignes the requested prototype to @prototype' do
-        get :new
         expect(assigns(:prototype)).to be_a_new(Prototype)
       end
       it 'renders the :new template' do
-        get :new
         expect(response).to render_template :new
       end
     end
@@ -43,7 +41,7 @@ describe PrototypesController do
     describe 'POST #create' do
       it 'assigns the requested prototype to @prototype' do
         post :create, params
-        expect(assigns(:prototype)).to to be_a_new(Prototype)
+        expect(assigns(:prototype)).to be_a_new(Prototype)
       end
 
       context 'with valid attribtues' do
@@ -100,7 +98,6 @@ describe PrototypesController do
       end
 
       it 'assigns the requested prototype to @prototype' do
-        expect(assigns(:prototype)).to eq prototype
       end
 
       context 'with valid attributes' do
