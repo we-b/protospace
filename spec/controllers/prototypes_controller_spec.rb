@@ -1,14 +1,10 @@
 require 'rails_helper'
 
 describe PrototypesController do
-   let!(:prototype) { create(:prototype, :with_sub_images) }
+   let(:prototype) { create(:prototype, :with_sub_images) }
    let(:params) {{
      id: prototype.id,
-     prototype: {
-       title: prototype.title,
-       catch_copy: prototype.catch_copy,
-       concept: prototype.concept
-     }
+     prototype: attribtues_for(:prototype) 
    }}
 
   context 'with user login' do
@@ -18,7 +14,10 @@ describe PrototypesController do
     end
 
     describe 'GET #new' do
-
+      it 'renders the :new template' do
+        get :new
+        expect(response).to render_template :new
+      end
     end
 
     describe 'POST #create' do
@@ -92,7 +91,7 @@ describe PrototypesController do
 
     describe 'PATCH #update' do
       it 'redirects sign_in page' do
-        patch :update, params
+        patch :update, id: prototype
         expect(response).to redirect_to new_user_session_path
       end
     end
