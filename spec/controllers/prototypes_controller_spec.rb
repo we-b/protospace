@@ -33,35 +33,37 @@ describe PrototypesController do
     end
 
     describe 'GET #show' do
-      it 'assigns the requested prototype to @prototype' do
+      before :each do
         get :show, id: prototype
+      end
+
+      it 'assigns the requested prototype to @prototype' do
         expect(assigns(:prototype)).to eq prototype
       end
 
       it 'assigns likes associated with prototype to @likes' do
-        get :show, id: prototype
         expect(assigns(:likes)).to eq prototype.likes
       end
 
       it 'renders the :show template' do
-        get :show, id: prototype
         expect(response).to render_template :show
       end
     end
 
     describe 'GET #edit' do
-      it 'assigns main_image to @main_image' do
+      before :each do
         get :edit, id: prototype
+      end
+
+      it 'assigns main_image to @main_image' do
         expect(assigns(:main_image)).to eq prototype.main_image
       end
 
       it 'assigns sub_images to @sub_images' do
-        get :edit, id: prototype
         expect(assigns(:sub_images)).to eq prototype.captured_images.sub
       end
 
       it 'renders the :edit template' do
-        get :edit, id: prototype
         expect(response).to render_template :edit
       end
     end
