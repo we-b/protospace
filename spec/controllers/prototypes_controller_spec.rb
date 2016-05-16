@@ -4,13 +4,17 @@ describe PrototypesController do
    let(:prototype) { create(:prototype, :with_sub_images) }
    let(:params) {{
      id: prototype.id,
-     prototype: attribtues_for(:prototype) 
+     prototype: attributes_for(:prototype, tag_list: 'hoge')
+   }}
+   let(:invalid_params) {{
+     id: prototype.id,
+     prototype: attribtues_for(:prototype, title: nil, tag_list: 'hoge')
    }}
 
   context 'with user login' do
     before { login_user }
     describe 'GET #index' do
-      it 'assings the requested prototypes to @prototypes' do
+      it 'assigns the requested prototypes to @prototypes' do
         get :index
         expect(assigns(:prototypes)).to include prototype
       end
@@ -37,6 +41,21 @@ describe PrototypesController do
     end
 
     describe 'POST #create' do
+      it 'assigns the requested prototype to @prototype' do
+        post :create, params
+        expect(assigns(:prototype)).to to be_a_new(Prototype)
+      end
+
+      context 'with valid attribtues' do
+        it 'saves the new prototype in the database' do
+          expect {
+            post :create, params
+          }.to change(Prototype, :count).by(1)
+        end
+      end
+
+      context 'with invalid attribtues' do
+      end
 
     end
 
@@ -77,10 +96,27 @@ describe PrototypesController do
     end
 
     describe 'PATCH #update' do
+      before :each do
+      end
+
+      it 'assigns the requested prototype to @prototype' do
+        expect(assigns(:prototype)).to eq prototype
+      end
+
+      context 'with valid attributes' do
+      end
+
+      context 'with invalid attributes' do
+      end
 
     end
 
     describe 'DELETE #destroy' do
+      context 'with valid attribtues' do
+      end
+
+      context 'with invalid attribtues' do
+      end
 
     end
   end
