@@ -67,7 +67,7 @@ describe Prototype do
 
   describe "#liked_by?(user)" do
     context "when liked by a user" do
-      it "returns a liking record" do
+      it "returns true" do
         user = create(:user)
         prototype = create(:prototype, user: user)
         like = create(:like, prototype: prototype, user: user)
