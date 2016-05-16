@@ -14,13 +14,15 @@ describe PrototypesController do
   context 'with user login' do
     before { login_user }
     describe 'GET #index' do
-      it 'assigns the requested prototypes to @prototypes' do
+      before :each do
         get :index
+      end
+
+      it 'assigns the requested prototypes to @prototypes' do
         expect(assigns(:prototypes)).to include prototype
       end
 
       it 'renders the :index template' do
-        get :index
         expect(response).to render_template :index
       end
     end
@@ -33,6 +35,7 @@ describe PrototypesController do
       it 'assignes the requested prototype to @prototype' do
         expect(assigns(:prototype)).to be_a_new(Prototype)
       end
+
       it 'renders the :new template' do
         expect(response).to render_template :new
       end
@@ -64,6 +67,10 @@ describe PrototypesController do
 
       it 'assigns the requested prototype to @prototype' do
         expect(assigns(:prototype)).to eq prototype
+      end
+
+      it 'assigns the requested comment to @comment' do
+        expect(assigns(:comment)).to be_a_new(Comment)
       end
 
       it 'assigns likes associated with prototype to @likes' do
@@ -98,6 +105,10 @@ describe PrototypesController do
       end
 
       it 'assigns the requested prototype to @prototype' do
+      end
+
+
+      it 'assigns the requested comment to @comment' do
       end
 
       context 'with valid attributes' do
