@@ -30,7 +30,7 @@ describe Prototype do
     end
   end
 
-  describe '#create' do
+  describe 'validations' do
     context "with valid attributes" do
       it "has a valid factory" do
         expect(build(:prototype)).to be_valid
