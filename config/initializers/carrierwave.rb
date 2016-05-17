@@ -11,8 +11,8 @@ CarrierWave.configure do |config|
      config.fog_directory = Settings.aws.s3_bucket_name_dev
      config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/#{config.fog_directory}"
    when 'test'
-     config.fog_directory = 'test.example.com'
-     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/test.example.com'
+     config.fog_directory = Settings.aws.s3_bucket_name_test
+     config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/#{config.fog_directory}"
    when 'production'
      config.fog_directory = 'production.example.com'
      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/example.com'
