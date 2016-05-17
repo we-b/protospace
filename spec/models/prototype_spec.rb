@@ -15,18 +15,17 @@ describe Prototype do
     describe 'with comments' do
       let(:comments_count) { 5 }
       let!(:prototype) { create(:prototype, :with_comments, comments_count: comments_count) }
-
-      it 'is associated with comments' do
-        expect(prototype.comments.size).to eq comments_count
-      end
-
       it 'deletes the comments when prototype is deleted' do
         expect{ prototype.destroy }.to change(Comment, :count).by(-1*comments_count)
       end
     end
 
     describe 'with likes' do
-
+      let(:likes_count) { 5 }
+      let!(:prototype) { create(:prototype, :with_likes, likes_count: likes_count) }
+      it 'deletes the likes when Prototype is deleted' do
+        expect{ prototype.destroy }.to change(Like, :count).by(-1*likes_count)
+      end
     end
   end
 
