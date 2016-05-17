@@ -4,13 +4,7 @@ describe UsersController do
   let(:user) { create(:user) }
   let(:params) {{
     id: user.id,
-    user: {
-      name: 'hoge',
-      email: user.email,
-      position: user.position,
-      profile: user.profile,
-      occupation: user.occupation
-    }
+    user: attributes_for(:user, name: 'hoge')
   }}
 
   context 'with user login' do
@@ -63,7 +57,7 @@ describe UsersController do
       end
 
       it 'sends flash messages' do
-        expect(flash[:notice]).to be_present
+        expect(flash[:notice]).to eq 'Your user infomation was successfully updated'
       end
     end
   end
