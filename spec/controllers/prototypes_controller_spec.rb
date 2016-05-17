@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe PrototypesController do
-   let(:prototype) { create(:prototype, :with_sub_images) }
+   let!(:prototype) { create(:prototype, :with_sub_images) }
    let(:params) {{
      id: prototype.id,
      prototype: attributes_for(:prototype, tag_list: 'hoge')
@@ -44,7 +44,7 @@ describe PrototypesController do
     describe 'POST #create' do
       it 'assigns the requested prototype to @prototype' do
         post :create, params
-        expect(assigns(:prototype)).to be_a_new(Prototype)
+        expect(assigns(:prototype)).to eq prototype
       end
 
       context 'with valid attribtues' do
@@ -53,9 +53,38 @@ describe PrototypesController do
             post :create, params
           }.to change(Prototype, :count).by(1)
         end
+
+        before :each do
+          post :create, params
+        end
+
+        it 'redirects to root_path' do
+          expect(response).to redirect_to root_path
+        end
+
+        it 'shows flash messages to show save the prototype successfully' do
+          expect(flash[:notice]).to be_present
+        end
       end
 
       context 'with invalid attribtues' do
+        it 'does not save the new prototype in the database' do
+          expect {
+            post :create, invalid_params
+          }.not_to change(Prototype, :count)
+        end
+
+        before :each do
+          post :create, invalid_params
+        end
+        
+        it 'renders the :show template' do
+          expect(response).to render_template :show
+        end
+
+        it 'shows flash messages to show save the prototype unsuccessfully' do
+          expect(flash[:alert]).to be_present
+        end
       end
 
     end
