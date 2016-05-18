@@ -4,11 +4,11 @@ describe PrototypesController do
    let!(:prototype) { create(:prototype, :with_sub_images) }
    let(:params) {{
      id: prototype.id,
-     prototype: attributes_for(:prototype, tag_list: 'hoge')
+     prototype: attributes_for(:prototype, title: 'hoge', tag_list: 'hoge')
    }}
    let(:invalid_params) {{
      id: prototype.id,
-     prototype: attribtues_for(:prototype, title: nil, tag_list: 'hoge')
+     prototype: attributes_for(:prototype, title: nil, tag_list: 'hoge')
    }}
 
   context 'with user login' do
@@ -31,7 +31,7 @@ describe PrototypesController do
       before :each do
         get :new
       end
-      
+
       it 'assignes the requested prototype to @prototype' do
         expect(assigns(:prototype)).to be_a_new(Prototype)
       end
@@ -43,8 +43,6 @@ describe PrototypesController do
 
     describe 'POST #create' do
       it 'assigns the requested prototype to @prototype' do
-        post :create, params
-        expect(assigns(:prototype)).to eq prototype
       end
 
       context 'with valid attribtues' do
@@ -63,7 +61,7 @@ describe PrototypesController do
         end
 
         it 'shows flash messages to show save the prototype successfully' do
-          expect(flash[:notice]).to be_present
+          expect(flash[:notice]).to eq 'New prototype was successfully created'
         end
       end
 
@@ -77,13 +75,13 @@ describe PrototypesController do
         before :each do
           post :create, invalid_params
         end
-        
-        it 'renders the :show template' do
-          expect(response).to render_template :show
+
+        it 'redirects new_prototype_path' do
+          expect(response).to redirect_to new_prototype_path
         end
 
         it 'shows flash messages to show save the prototype unsuccessfully' do
-          expect(flash[:alert]).to be_present
+          expect(flash[:alert]).to eq 'New prototype was unsuccessfully created'
         end
       end
 
@@ -116,6 +114,10 @@ describe PrototypesController do
         get :edit, id: prototype
       end
 
+      it 'assigns the requested prototype to @prototype' do
+        expect(assigns(:prototype)).to eq prototype
+      end
+
       it 'assigns main_image to @main_image' do
         expect(assigns(:main_image)).to eq prototype.main_image
       end
@@ -130,31 +132,85 @@ describe PrototypesController do
     end
 
     describe 'PATCH #update' do
-      before :each do
-      end
-
-      it 'assigns the requested prototype to @prototype' do
-      end
-
-
-      it 'assigns the requested comment to @comment' do
-      end
-
       context 'with valid attributes' do
+        before :each do
+          patch :update, params
+        end
+        it 'assigns the requested prototype to @prototype' do
+          expect(assigns(:prototype)).to eq prototype
+        end
+
+        it 'assigns the requested comment to @comment' do
+          expect(assigns(:comment)).to be_a_new(Comment)
+        end
+
+        it 'updates attributes of prototype' do
+          prototype.reload
+          expect(prototype.title).to eq 'hoge'
+        end
+
+        it 'redirects to prototype_path'  do
+          expect(response).to redirect_to prototype_path(prototype)
+        end
+
+        it 'shows flash message to show update prototype successfully' do
+          expect(flash[:notice]).to eq 'Your prototype was successfully updated'
+        end
       end
 
       context 'with invalid attributes' do
-      end
+        before :each do
+          patch :update, invalid_params
+        end
 
+        it 'assigns the requested prototype to @prototype' do
+          expect(assigns(:prototype)).to eq prototype
+        end
+
+        it 'does not save the new prototype' do
+          prototype.reload
+          expect(prototype.title).not_to eq 'hoge'
+        end
+
+        it 'renders the :show template' do
+          expect(response).to render_template :edit
+        end
+
+        it 'shows flash message to show update prototype unsuccessfully' do
+          expect(flash[:alert]).to eq 'Your prototype was unsuccessfully updated'
+        end
+      end
     end
 
     describe 'DELETE #destroy' do
+      let!(:prototype_d) { create(:prototype) }
+
+      before :each do
+        delete :destroy, id: prototype_d
+      end
+
+      it 'assigns the requested prototype to @prototype' do
+        expect(assigns(:prototype)).to eq prototype_d
+      end
+
       context 'with valid attribtues' do
+        it 'deletes the prototype' do
+         expect{
+           delete :destroy, id: prototype_d
+         }.to change(Prototype, :count).by(-1)
+        end
+
+        it 'redirects to root_path' do
+          expect(response).to redirect_to root_path
+        end
+
+        it 'shows flash message to show delete prototype successfully' do
+          expect(flash[:notice]).to eq 'The prototype was successfully deleted'
+        end
       end
 
       context 'with invalid attribtues' do
       end
-
     end
   end
 
@@ -168,7 +224,7 @@ describe PrototypesController do
 
     describe 'post #create' do
       it 'redirects sign_in page' do
-        post :create 
+        post :create
         expect(response).to redirect_to new_user_session_path
       end
     end
