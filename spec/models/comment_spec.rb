@@ -7,7 +7,7 @@ describe Comment do
       comment = create(:comment, prototype: prototype)
       expect(comment.prototype).to eq prototype
     end
-    
+
     it 'is associated with a user' do
       user = create(:user)
       comment = create(:comment, user: user)
