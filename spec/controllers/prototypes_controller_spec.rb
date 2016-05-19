@@ -42,9 +42,6 @@ describe PrototypesController do
     end
 
     describe 'POST #create' do
-      it 'assigns the requested prototype to @prototype' do
-      end
-
       context 'with valid attribtues' do
         it 'saves the new prototype in the database' do
           expect {
@@ -183,27 +180,25 @@ describe PrototypesController do
     end
 
     describe 'DELETE #destroy' do
-      let!(:prototype_d) { create(:prototype) }
-
       it 'assigns the requested prototype to @prototype' do
-        delete :destroy, id: prototype_d
-        expect(assigns(:prototype)).to eq prototype_d
+        delete :destroy, id: prototype
+        expect(assigns(:prototype)).to eq prototype
       end
 
       context 'with valid attribtues' do
         it 'deletes the prototype' do
          expect{
-           delete :destroy, id: prototype_d
+           delete :destroy, id: prototype
          }.to change(Prototype, :count).by(-1)
         end
 
         it 'redirects to root_path' do
-          delete :destroy, id: prototype_d
+          delete :destroy, id: prototype
           expect(response).to redirect_to root_path
         end
 
         it 'shows flash message to show delete prototype successfully' do
-          delete :destroy, id: prototype_d
+          delete :destroy, id: prototype
           expect(flash[:notice]).to eq 'The prototype was successfully deleted'
         end
       end
