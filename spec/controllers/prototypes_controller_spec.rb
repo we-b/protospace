@@ -43,14 +43,14 @@ describe PrototypesController do
 
     describe 'POST #create' do
       context 'with valid attribtues' do
+        before :each do
+          post :create, params
+        end
+
         it 'saves the new prototype in the database' do
           expect {
             post :create, params
           }.to change(Prototype, :count).by(1)
-        end
-
-        before :each do
-          post :create, params
         end
 
         it 'redirects to root_path' do
@@ -63,14 +63,14 @@ describe PrototypesController do
       end
 
       context 'with invalid attribtues' do
+        before :each do
+          post :create, invalid_params
+        end
+
         it 'does not save the new prototype in the database' do
           expect {
             post :create, invalid_params
           }.not_to change(Prototype, :count)
-        end
-
-        before :each do
-          post :create, invalid_params
         end
 
         it 'redirects new_prototype_path' do
@@ -204,6 +204,7 @@ describe PrototypesController do
       end
 
       context 'with invalid attribtues' do
+
       end
     end
   end
