@@ -185,27 +185,21 @@ describe PrototypesController do
         expect(assigns(:prototype)).to eq prototype
       end
 
-      context 'with valid attribtues' do
-        it 'deletes the prototype' do
-         expect{
-           delete :destroy, id: prototype
-         }.to change(Prototype, :count).by(-1)
-        end
+     it 'deletes the prototype' do
+      expect{
+        delete :destroy, id: prototype
+      }.to change(Prototype, :count).by(-1)
+     end
 
-        it 'redirects to root_path' do
-          delete :destroy, id: prototype
-          expect(response).to redirect_to root_path
-        end
+     it 'redirects to root_path' do
+       delete :destroy, id: prototype
+       expect(response).to redirect_to root_path
+     end
 
-        it 'shows flash message to show delete prototype successfully' do
-          delete :destroy, id: prototype
-          expect(flash[:notice]).to eq 'The prototype was successfully deleted'
-        end
-      end
-
-      context 'with invalid attribtues' do
-
-      end
+     it 'shows flash message to show delete prototype successfully' do
+       delete :destroy, id: prototype
+       expect(flash[:notice]).to eq 'The prototype was successfully deleted'
+     end
     end
   end
 

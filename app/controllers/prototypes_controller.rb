@@ -43,12 +43,8 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    if @prototype.destroy
-      redirect_to :root, notice: "The prototype was successfully deleted"
-    else
-      flash.now[:alert] = 'The prototype was unsuccessfully del'
-      render action: :show
-    end
+    @prototype.destroy
+    redirect_to :root, notice: "The prototype was successfully deleted"
   end
 
   private
