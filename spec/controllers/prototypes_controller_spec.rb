@@ -14,7 +14,7 @@ describe PrototypesController do
   context 'with user login' do
     before { login_user }
     describe 'GET #index' do
-      before :each do
+      before do
         get :index
       end
 
@@ -28,7 +28,7 @@ describe PrototypesController do
     end
 
     describe 'GET #new' do
-      before :each do
+      before do
         get :new
       end
 
@@ -43,7 +43,7 @@ describe PrototypesController do
 
     describe 'POST #create' do
       context 'with valid attribtues' do
-        before :each do
+        before do
           post :create, params
         end
 
@@ -63,7 +63,7 @@ describe PrototypesController do
       end
 
       context 'with invalid attribtues' do
-        before :each do
+        before do
           post :create, invalid_params
         end
 
@@ -85,7 +85,7 @@ describe PrototypesController do
     end
 
     describe 'GET #show' do
-      before :each do
+      before do
         get :show, id: prototype
       end
 
@@ -107,7 +107,7 @@ describe PrototypesController do
     end
 
     describe 'GET #edit' do
-      before :each do
+      before do
         get :edit, id: prototype
       end
 
@@ -130,7 +130,7 @@ describe PrototypesController do
 
     describe 'PATCH #update' do
       context 'with valid attributes' do
-        before :each do
+        before do
           patch :update, params
         end
         it 'assigns the requested prototype to @prototype' do
@@ -156,7 +156,7 @@ describe PrototypesController do
       end
 
       context 'with invalid attributes' do
-        before :each do
+        before do
           patch :update, invalid_params
         end
 
