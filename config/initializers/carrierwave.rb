@@ -12,9 +12,20 @@ CarrierWave.configure do |config|
      config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/#{config.fog_directory}"
    when 'test'
      config.fog_directory = 'test.example.com'
-     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/test.example.com'
+     config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/example.com"
    when 'production'
      config.fog_directory = 'production.example.com'
      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/example.com'
+  end
+
+  if Rails.env.test? 
+    CarrierWave.configure do |config|
+      config.storage = :file
+      config.enable_processing = false
+    end
+  else
+    CarrierWave.configure do |config|
+      config.storage = :fog
+    end
   end
 end
