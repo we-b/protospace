@@ -5,10 +5,7 @@ FactoryGirl.define do
     concept     { Faker::Lorem.sentence }
     created_at  { Faker::Time.between(2.days.ago, Time.now) }
     user
-
-    after(:build) do |prototype|
-      prototype.main_image = build(:main_image, prototype: prototype)
-    end
+    main_image
 
     trait :with_sub_images do
       transient do
