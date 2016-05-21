@@ -8,17 +8,15 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'development'
+      config.storage = :fog
      config.fog_directory = Settings.aws.s3_bucket_name_dev
      config.asset_host = "https://s3-ap-northeast-1.amazonaws.com/#{config.fog_directory}"
+   when 'test'
+     config.storage = :file
+     config.enable_processing = false
    when 'production'
+     config.storage = :fog
      config.fog_directory = 'production.example.com'
      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/example.com'
-  end
-
-  if Rails.env.test? 
-    config.storage = :file
-    config.enable_processing = false
-  else
-    config.storage = :fog
   end
 end
