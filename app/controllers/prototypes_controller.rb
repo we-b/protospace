@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_prototype, only: [:edit, :update, :destroy]
   before_action :set_new_comment, only: [:show, :update]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.eager_load(:main_image, :user)
@@ -19,7 +19,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      redirect_to ({ action: :new }), alert: 'New prototype was unsuccessfully created'
      end
   end
 
@@ -37,16 +37,14 @@ class PrototypesController < ApplicationController
     if @prototype.update(prototype_params)
       redirect_to ({ action: :show }), notice: 'Your prototype was successfully updated'
     else
-      render ({ action: :edit }), alert: 'Your prototype was unsuccessfully updated'
+      flash.now[:alert] = 'Your prototype was unsuccessfully updated'
+      render action: :edit
     end
   end
 
   def destroy
-    if @prototype.destroy
-      redirect_to :root, notice: "The prototype was successfully deleted"
-    else
-      render ({ action: :show }), alert: "The prototype was unsuccessfully deleted"
-    end
+    @prototype.destroy
+    redirect_to :root, notice: "The prototype was successfully deleted"
   end
 
   private
