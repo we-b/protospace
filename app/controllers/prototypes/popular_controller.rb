@@ -6,3 +6,4 @@ class Prototypes::PopularController < ApplicationController
     @type = 'popular'
   end
 end
+
