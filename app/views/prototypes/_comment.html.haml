@@ -1,6 +1,6 @@
 .media
   .media-left
-    = link_to image_tag(comment.user.avatar.thumb, style: "border-radius: 50%;"), user_path(comment.user)
+    = link_to image_tag(comment.user.avatar.thumb, class: "image-preview-user"), user_path(comment.user)
   .media-body
     %h4#top-aligned-media.media-heading
       = comment.user.name
