@@ -7,6 +7,7 @@ class Prototypes::LikesController < ApplicationController
 
   def destroy
     @prototype.likes.find(params[:id]).destroy
+    @prototype.reload
   end
 
   private
