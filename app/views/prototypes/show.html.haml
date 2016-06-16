@@ -54,12 +54,12 @@
         = render partial: 'prototypes/comment', collection: @prototype.comments
       %form.form-inline
       - if user_signed_in?
-        = form_for @comment, remote: true do |f|
+        = form_for @comment do |f|
           = f.hidden_field :user_id, value: current_user.id
           = f.hidden_field :prototype_id, value: @prototype.id
           %h4 Write a comment
           .row
             .form-group.col-md-10
-              = f.text_area :content, require: true, rows: "3", placeholder: "Your comments", id: "comment-field", class: "form-control", style: "resize: vertical;"
+              = f.text_area :content, rows: "3", placeholder: "Your comments", id: "comment-field", class: "form-control", style: "resize: vertical;"
             .form-group.col-md-2
-              = f.submit "COMMENT", class: "button btn btn-primary"
+              = f.submit "COMMENT", class: "button btn btn-primary", id: 'js-comment'
